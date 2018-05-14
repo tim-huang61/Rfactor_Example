@@ -17,9 +17,15 @@ namespace Rfactor_Example
     {
         public string SayHello(DateTime dateTime, string user)
         {
-            string result;
             var calendar = new TaiwanCalendar();
             var hour = calendar.GetHour(dateTime);
+
+            return "Hi, " + user + ". " + GetSecondGreeting(hour);
+        }
+
+        private static string GetSecondGreeting(int hour)
+        {
+            string result;
             if (hour >= 6 && hour < 12)
             {
                 result = "Good morning!";
@@ -32,8 +38,6 @@ namespace Rfactor_Example
             {
                 result = "Good night!";
             }
-
-            result = "Hi, " + user + ". " + result;
 
             return result;
         }
