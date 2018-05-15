@@ -18,28 +18,10 @@ namespace Rfactor_Example
         public string SayHello(DateTime dateTime, string user)
         {
             var calendar = new TaiwanCalendar();
+            var greeting = new Greeting();
             var hour = calendar.GetHour(dateTime);
 
-            return "Hi, " + user + ". " + GetSecondGreeting(hour);
-        }
-
-        private static string GetSecondGreeting(int hour)
-        {
-            string result;
-            if (hour >= 6 && hour < 12)
-            {
-                result = "Good morning!";
-            }
-            else if (hour >= 6 && hour < 19)
-            {
-                result = "Good afternoon!";
-            }
-            else
-            {
-                result = "Good night!";
-            }
-
-            return result;
+            return greeting.GetFirstGreeting(user) + greeting.GetSecondGreeting(hour);
         }
     }
 }
