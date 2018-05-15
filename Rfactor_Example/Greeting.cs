@@ -1,7 +1,17 @@
-﻿namespace Rfactor_Example
+﻿using System;
+using System.Collections.Generic;
+
+namespace Rfactor_Example
 {
     public class Greeting
     {
+        private List<IGreetingRule> _greetingRules = new List<IGreetingRule>
+        {
+            new MorningGreetingRule(),
+            new AfternoonGreetingRule(),
+            new NightGreetingRule()
+        };
+
         public string GetFirstGreeting(string user)
         {
             return "Hi, " + user + ". ";
@@ -9,21 +19,15 @@
 
         public string GetSecondGreeting(int hour)
         {
-            string result;
-            if (hour >= 6 && hour < 12)
+            foreach (var greetingRule in _greetingRules)
             {
-                result = "Good morning!";
-            }
-            else if (hour >= 6 && hour < 19)
-            {
-                result = "Good afternoon!";
-            }
-            else
-            {
-                result = "Good night!";
+                if (greetingRule.IsRight(hour))
+                {
+                    return greetingRule.GetGreeting();
+                }
             }
 
-            return result;
+            throw new ArgumentOutOfRangeException();
         }
     }
 }

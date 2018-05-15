@@ -42,7 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AfternoonGreetingRule.cs" />
     <Compile Include="Greeting.cs" />
+    <Compile Include="IGreetingRule.cs" />
+    <Compile Include="MorningGreetingRule.cs" />
+    <Compile Include="NightGreetingRule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
